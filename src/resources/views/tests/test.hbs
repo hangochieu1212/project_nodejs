@@ -1,0 +1,30 @@
+<div class="mt-4">
+    <div class="col-lg-xl-12">
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">NAME</th>
+      <th scope="col">AGE</th>
+      <th scope="col">CLASS</th>
+      <th scope="col">SCHOOL</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each lists}}
+
+    <tr>            
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.age}}</td>
+      <td>{{this.class}}</td>
+      <td>{{this.school}}</td>
+    </tr>
+    
+    {{/each}}
+
+
+  </tbody>
+</table>
+    </div>
+</div>

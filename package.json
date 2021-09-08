@@ -1,0 +1,38 @@
+{
+  "name": "node_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "beautiful": "prettier --single-quote --trailing-comma all --tab-width 4 --write src/**/*.{js,json,scss}",
+    "start": "nodemon --inspect src/server.js",
+    "watch": "node-sass --watch --no-source-map src/resources/scss/app.scss src/public/css/app.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hangochieu1212/nodejs_hieu.git"
+  },
+  "author": "hangochieu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hangochieu1212/nodejs_hieu/issues"
+  },
+  "homepage": "https://github.com/hangochieu1212/nodejs_hieu#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
+    "method-override": "^3.0.0",
+    "mongoose-delete": "^0.5.4",
+    "mongoose-slug-generator": "^1.0.4"
+  },
+  "devDependencies": {
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "mongoose": "^6.0.2",
+    "morgan": "^1.10.0",
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2"
+  }
+}

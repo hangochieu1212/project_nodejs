@@ -1,0 +1,42 @@
+<div class="mt-4">
+    <div class="col-lg-xl-12">
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Lớp học phần</th>
+      <th scope="col">Học phần</th>
+      <th scope="col">Thời gian bắt đầu</th>
+      <th scope="col">Thời gian kết thúc</th>
+      <th scope="col">Thứ và tiết học</th>
+      <th scope="col">Địa điểm</th>
+      <th scope="col">Giảng viên</th>
+      <th scope="col">Sĩ số</th>
+      <th scope="col">Sĩ số đăng ký</th>
+      <th scope="col">Số tín chỉ</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each lists}}
+
+    <tr>            
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.class}}</td>
+      <td>{{this.module}}</td>
+      <td>{{this.start}}</td>
+      <td>{{this.end}}</td>
+      <td>{{this.day}}</td>
+      <td>{{this.location}}</td>
+      <td>{{this.lecturer}}</td>
+      <td>{{this.membership}}</td>
+      <td>{{this.license_number}}</td>
+      <td>{{this.number_of_credit}}</td>
+    </tr>
+    
+    {{/each}}
+
+
+  </tbody>
+</table>
+    </div>
+</div>

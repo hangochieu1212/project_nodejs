@@ -1,0 +1,110 @@
+<div class="mt-4">
+    <div class="col-lg-xl-12">
+      <div>
+        <h3>Khoá học đã xoá</h3>
+        <a href="/me/stored-lists">Quay lại</a>
+      </div>
+        <table class="table mt-4">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Lớp học phần</th>
+      <th scope="col">Học phần</th>
+      <th scope="col">Thời gian bắt đầu</th>
+      <th scope="col">Thời gian kết thúc</th>
+      <th scope="col">Thứ và tiết học</th>
+      <th scope="col">Địa điểm</th>
+      <th scope="col">Giảng viên</th>
+      <th scope="col">Sĩ số</th>
+      <th scope="col">Sĩ số đăng ký</th>
+      <th scope="col" colspan="2">Số tín chỉ</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    {{#each lists}}
+
+    <tr>            
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.class}}</td>
+      <td>{{this.module}}</td>
+      <td>{{this.start}}</td>
+      <td>{{this.end}}</td>
+      <td>{{this.day}}</td>
+      <td>{{this.location}}</td>
+      <td>{{this.lecturer}}</td>
+      <td>{{this.membership}}</td>
+      <td>{{this.license_number}}</td>
+      <td>{{this.number_of_credit}}</td>
+    </tr>
+    <td>
+        <a href="" class="btn-btn-link btn-restore" data-id="{{this._id}}">Khôi phục</a>
+        <a href="" class="btn-btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-list-modal">Xoá vĩnh viễn</a>
+    </td>
+    {{else}}
+    <tr>
+      <td colspan="9" class="text-center">
+        Bạn chưa đăng môn học nào.
+        <a href="/lists/create">Đăng môn học</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+    </div>
+</div>
+ {{!---confirm delete list--}}
+ <div id="delete-list-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xoá môn học</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắc chắn muốn xoá môn này?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-list" type="button" class="btn btn-danger">Xoá bỏ</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form name="delete-list-form" method="POST"></form>
+<form name="restore-list-form" method="POST"></form>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var listId
+    var deleteForm = document.forms['delete-list-form'];
+     var restoreForm = document.forms['restore-list-form'];
+    var btnDeleteList = document.getElementById('btn-delete-list');
+    var btnRestore = $('.btn-restore');
+  $('#delete-list-modal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  listId = button.data('id');
+  console.log(listId);
+  });
+  
+  btnDeleteList.onclick = function() {
+    
+    
+    deleteForm.action = '/lists/' + listId + '/force?_method=DELETE';
+    deleteForm.submit();
+  //console.log(btnDeleteList);
+  };
+  btnRestore.click(function(e){
+    e.preventDefault();
+    //$(this).data('id');
+    var listId = $(this).data('id');
+    restoreForm.action = '/lists/' + listId + '/restore?_method=PATCH';
+    restoreForm.submit();
+  });
+  });
+</script>
